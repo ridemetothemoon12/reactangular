@@ -1,8 +1,15 @@
 import { useState } from "react";
 import "./App.css";
+import { useQuery } from "@tanstack/react-query";
+import { testQueries, testQueryKeysFactory } from "./features/api/test.queries";
+import { queryClient } from "./shared/api/query-client";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const { data: test } = useQuery(testQueries.getAll());
+  console.log(test);
+  queryClient.invalidateQueries({ queryKey: testQueryKeysFactory.all() });
 
   return (
     <>

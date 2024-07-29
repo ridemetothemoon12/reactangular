@@ -1,18 +1,16 @@
 import {
-  QueryFunctionContext,
+  DataTag,
   useQuery as rawUseQuery,
   UseQueryOptions,
 } from "@tanstack/react-query";
 
-export const useQuery = <TData,>({
-  options,
-  queryFn,
-}: {
-  options: Omit<UseQueryOptions, "queryKey">;
-  queryFn: (context: QueryFunctionContext) => Promise<TData>;
-}) =>
+export const useQuery = <T,>(
+  options: UseQueryOptions<T, Error, T, string[]> & {
+    initialData?: undefined;
+  } & {
+    queryKey: DataTag<string[], T>;
+  }
+) =>
   rawUseQuery({
-    queryKey: ["test"],
-    queryFn: queryFn,
     ...options,
   });
