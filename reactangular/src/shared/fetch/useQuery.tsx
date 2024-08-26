@@ -4,8 +4,8 @@ import {
   UseQueryOptions,
 } from "@tanstack/react-query";
 
-export const useQuery = <T,>(
-  options: UseQueryOptions<T, Error, T, string[]> & {
+export const useQuery = <T, D = T>(
+  options: UseQueryOptions<T, Error, D, string[]> & {
     initialData?: undefined;
   } & {
     queryKey: DataTag<string[], T>;
