@@ -1,13 +1,14 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { ParamParseKey, Params } from "react-router-dom";
 
-type indexArgsType = {
-  readonly loaderAll: "/loader_test/:index";
-};
+// type indexArgsType = {
+//   readonly loaderAll: "/loader_test/:index";
+//   readonly loaderAll2: "/loader_test/:index2";
+// };
 // const 로 선언하는 방식도 있음
-// const indexArgsType = {
-//   loaderAll: "/loader_test/:index",
-// } as const;
+const indexArgsType = {
+  loaderAll: "/loader_test/:index",
+} as const;
 
 export class loaderQueries {
   static getLoaderAll(index: string) {
@@ -35,8 +36,8 @@ export const loaderFn =
     params,
   }: {
     // 리액트 라우터 돔에서 해당 타입 helper를 통해 params의 args를 반환받을 수 있는 타입 설정이 default로 있다는 사실은 처음 알았다..
-    params: Params<ParamParseKey<keyof indexArgsType>>;
-    // params: Params<ParamParseKey<typeof indexArgsType>>;
+    // params: Params<ParamParseKey<keyof Pick<indexArgsType, "loaderAll2">>>;
+    params: Params<ParamParseKey<typeof indexArgsType.loaderAll>>;
   }) => {
     const query = loaderQueries.getLoaderAll(params.index ?? "");
     return (
