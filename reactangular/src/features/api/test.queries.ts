@@ -8,6 +8,11 @@ export class testQueries {
       initialData: () => 1,
     });
   }
+  // static getTestList() {
+  //   return queryOptions({
+  //     내가 원하는 어떤 옵션값들의 집합
+  //   })
+  // }
 }
 
 export const testQueryKeysFactory = {
