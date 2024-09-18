@@ -1,4 +1,4 @@
-import { queryOptions } from "@tanstack/react-query";
+import { queryOptions, UseMutationOptions } from "@tanstack/react-query";
 
 export class testQueries {
   static getAll() {
@@ -8,11 +8,15 @@ export class testQueries {
       initialData: () => 1,
     });
   }
-  // static getTestList() {
-  //   return queryOptions({
-  //     내가 원하는 어떤 옵션값들의 집합
-  //   })
-  // }
+
+  static postTestList(): UseMutationOptions {
+    return {
+      mutationFn: async () => await [1, 2, 3, 4, 5, 6, 7],
+      onSuccess: () => {
+        return console.log("wow");
+      },
+    };
+  }
 }
 
 export const testQueryKeysFactory = {
