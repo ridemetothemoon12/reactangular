@@ -15,6 +15,7 @@ export class testQueries {
       onSuccess: () => {
         return console.log("wow");
       },
+      
     };
   }
 }
