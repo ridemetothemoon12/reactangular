@@ -1,7 +1,20 @@
-import { PropsWithChildren } from "react";
+import { MouseEvent, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
 
-const Button = (props: PropsWithChildren) => {
-  return <button>{props.children}</button>;
+interface CommonProps {
+  className?: string;
+}
+interface ButtonProps extends CommonProps {
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Button = (props: PropsWithChildren<ButtonProps>) => {
+  const cn = twMerge("", props.className);
+  return (
+    <button className={cn} {...props}>
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;
