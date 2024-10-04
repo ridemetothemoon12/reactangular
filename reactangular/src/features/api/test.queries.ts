@@ -1,10 +1,11 @@
 import { queryOptions, UseMutationOptions } from "@tanstack/react-query";
+import Api from "../../shared/api/axios-config";
 
 export class testQueries {
   static getAll() {
     return queryOptions({
       queryKey: ["all"],
-      queryFn: async () => await 1,
+      queryFn: async () => Api.getInstance().fetchData('test'),
       initialData: () => 1,
     });
   }
