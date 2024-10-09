@@ -1,10 +1,12 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface CommonProps {
+  registerName?: string;
   className?: string;
 }
-interface InputProps extends CommonProps {
+
+interface InputProps extends CommonProps, ComponentPropsWithoutRef<"input"> {
   onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
 }
 
