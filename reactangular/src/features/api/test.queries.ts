@@ -4,9 +4,9 @@ import Api from "../../shared/api/axios-config";
 export class testQueries {
   static getAll() {
     return queryOptions({
-      queryKey: ["all"],
-      queryFn: async () => Api.getInstance().fetchData('test'),
-      initialData: () => 1,
+      queryKey: ["search"],
+      queryFn: () => Api.getInstance().get<{ test: string }>("search"),
+      select: (data) => data.test,
     });
   }
 
@@ -16,7 +16,6 @@ export class testQueries {
       onSuccess: () => {
         return console.log("wow");
       },
-      
     };
   }
 }

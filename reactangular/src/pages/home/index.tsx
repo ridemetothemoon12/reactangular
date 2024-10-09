@@ -7,8 +7,8 @@ import { queryClient } from "../../shared/api/query-client";
 import { useEffect } from "react";
 
 const HomeIndex = () => {
-  const { data: test } = useQuery(testQueries.getAll());
-  console.log(test);
+  const { data } = useQuery(testQueries.getAll());
+  console.log(data);
 
   queryClient.invalidateQueries({ queryKey: testQueryKeysFactory.all() });
 
