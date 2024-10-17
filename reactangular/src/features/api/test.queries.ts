@@ -6,7 +6,8 @@ export class testQueries {
     return queryOptions({
       queryKey: ["search"],
       queryFn: () => Api.getInstance().get<{ test: string }>("search"),
-      select: (data) => data.test,
+      // queryFn: async () => await 1,
+      // select: (data) => data.test,
     });
   }
 
@@ -21,7 +22,7 @@ export class testQueries {
 }
 
 export const testQueryKeysFactory = {
-  all: () => ["test"],
+  all: () => ["search"],
 
   test_list: () => [...testQueryKeysFactory.all(), "list"],
   test_list_item: (item: number) => [...testQueryKeysFactory.test_list(), item],

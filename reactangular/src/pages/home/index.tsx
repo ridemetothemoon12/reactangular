@@ -5,10 +5,15 @@ import {
 } from "../../features/api/test.queries";
 import { queryClient } from "../../shared/api/query-client";
 import { useEffect } from "react";
+import { useQueryCacheData } from "../../shared/lib/use-query-cache";
 
 const HomeIndex = () => {
   const { data } = useQuery(testQueries.getAll());
-  console.log(data);
+  console.log("data", data);
+
+  const test = useQueryCacheData(testQueryKeysFactory.all());
+
+  console.log("test", test?.state.data);
 
   queryClient.invalidateQueries({ queryKey: testQueryKeysFactory.all() });
 
