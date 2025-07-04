@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 
-const DataAttritubePattern = ({ event }: { event: boolean }) => {
+const DataAttritubePattern = ({ event }: { event: string }) => {
   useEffect(() => {
+    document.querySelectorAll(`.tester`).forEach((element) => {
+      return element?.setAttribute("data-change-text", "false");
+    });
     const onClickEvent = () => {
-      document
-        .querySelector(".tester")
-        ?.setAttribute("data-change-text", event ? "true" : "false");
+      document.getElementById(event)?.setAttribute("data-change-text", "true");
     };
     window.addEventListener("click", onClickEvent);
 
